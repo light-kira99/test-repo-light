@@ -64,10 +64,10 @@ def query():
     # match top 10 templateid in database containing all templates
     df_matching_results = df_top.merge(df_all_tmplt, left_on='tmplt_id_1', right_on='templateId_new')[['name', 'frontImageUrl', 'url', 'templateId_new', 'tmplt_id_1', 'Sim Score']]
     
-    # save bucket links for images
-    bucketName = 'video-generation/'
+   # create bucket links for matching images
+    mainAdrs = 'https://objectstore.e2enetworks.net/video-generation/'
     folderName = 'template-images/'
-    df_matching_results['bucket_link'] = df_matching_results['url'].apply(lambda url : bucketName + folderName + url.split('/')[-2] + '.jpg')
+    df_matching_results['bucket_link'] = df_matching_results['url'].apply(lambda url : mainAdrs + folderName + url.split('/')[-2] + '.jpg')
     
     
     # return the matching results in json format
