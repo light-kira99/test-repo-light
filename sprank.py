@@ -101,6 +101,3 @@ for (id, new_rank) in list(next_ranks.items()) :
 conn.commit()
 cur.close()
 
-
-# extra changes
-# one more line
